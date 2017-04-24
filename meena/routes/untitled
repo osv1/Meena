@@ -1,0 +1,50 @@
+
+Category Schema
+	name
+	image: 
+	url: /
+    parent_id:
+    level
+
+    
+
+ 0           1      2
+ Men > Clothing > Shirt & T
+                > trousers
+
+Product Schema has Category Schema
+  category {  type:  , ref Category}
+
+
+
+  Page
+
+  /products  
+Paginate
+  left panel filter
+  critera:
+  Brand:
+  Category:
+  Price range:
+  Sort: 
+
+
+Milestone 1: Category Schema
+             Show category page with images from backend
+             Category Product Page - Pagination 
+             Panel for filter based on category, price etc
+             Sort
+
+ Milestone 2: Category with multiple levels
+              Remove commented code  								@@@@@@@@@   done
+              Check for negative conditions
+              routes/* files configure passport strategy for all files  @@@@@@@@@  	done
+              Maintain a constant files 								@@@@@@@@@   done
+              configue multer/file upload location and configuration, same for all    @@@@@@@@@   done
+              Validation messages       @@@@@@@@@   done
+
+ Milestone 3: Multiple products upload using csv and xls files
+ 			  Single Product Page with realted feedbacks and complaints
+ 			  Ratings , with average
+ 			  Block User
+ 			  Not available 

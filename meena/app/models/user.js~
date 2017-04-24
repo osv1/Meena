@@ -1,0 +1,16 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema,
+ObjectId = Schema.ObjectId;
+//var userInfoModel = require("./userInfo");
+var mongoosePaginate = require('mongoose-paginate');
+var UserSchema = new  Schema({
+   firstName:{type:String, required: true},
+   email:String,
+   mobileNumber:{type:Number,required: true},  		  		
+   userName:{type:String, required: true},
+   password: {type:Schema.Types.Mixed,required:true}
+});
+
+var User = mongoose.model('user', UserSchema);
+module.exports = User;
+

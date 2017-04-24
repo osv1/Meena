@@ -1,0 +1,114 @@
+ <div class="container-fluid">
+ <center><h2> Registration Form</h2></center>
+  <div class="row">
+    <div class="col-md-6" >
+      <form  class="form-horizontal" name="userForm"> 
+					<div class="form-group">
+							<div class="col-md-12">
+										<br/>
+										<br/>
+										<label control-label col-md-5" for="name">Name:</label>        
+										<input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="user.firstName" required name='fname' ng-minlength="4" ng-maxlength="15"  ng-pattern="/^[a-zA-Z\s]*$/">
+											 <span class="error" ng-show="userForm.fname.$dirty&&userForm.fname.$error.required" style="color:maroon">
+											 Required Name!</span>
+											<span class="error" ng-show="userForm.fname.$error.minlength" style="color:maroon">
+												Not valid name! it should be of minimum 0f 4 letters</span>
+											<span class="error" ng-show="userForm.fname.$error.maxlength" style="color:maroon">
+												 It should be of maxlength 15 !</span>
+												 <span style="color:maroon" ng-show="userForm.fname.$dirty&&userForm.fname.$error.pattern">Please Enter Valid Name</span>
+						</div>
+						</div>
+					<div class="form-group">
+							<div class="col-md-12"> 
+									<label control-label col-md-5" for="email" >Email:</label>
+											<input type="email" class="form-control"  name='email' placeholder="Enter email" ng-model="user.email"  ng-pattern="/^[^\s@]+@[^\s@]+\.[a-z]{2,5}$/" required >
+												<span style="color:maroon" ng-show="userForm.email.$dirty&&userForm.email.$error.required"> Required email id! </span>
+											<span style="color:maroon" ng-show="userForm.email.$dirty&&userForm.email.$error.pattern">Please Enter Valid Email</span>
+					</div>
+					</div>
+					<div class="form-group">
+							 <div class="col-md-12"> 
+										 <label control-label col-md-5" for="mob">Mobile No.:</label>
+												<input type="text"  name='mobno' id="mob" placeholder="Enter mobile no." ng-model="user.mobileNumber" required   ng-minlength="10"  ng-maxlength="10" ng-pattern="/^[0-9]{1,}$/">
+								<br/>
+								<span class="error" ng-show="userForm.mobno.$dirty&&userForm.mobno.$error.required" style="color:maroon">
+								 Required mobile no.!</span>
+								 <span class="error" ng-show="userForm.mobno.$error.minlength" style="color:maroon">
+									Not valid number! it should be of 10 digits</span>
+								<span class="error" ng-show="userForm.mobno.$error.maxlength" style="color:maroon">
+									Not valid number! it should be of 10 digits</span>
+									<span style="color:maroon" ng-show="userForm.mobno.$dirty && userForm.mobno.$error.pattern">Please enter postive numbers only & it should be of 10 digits only & no alphabetic characters are allowed! </span>
+						 </div>
+					</div>
+					<div class="form-group">
+							<div class="col-md-12"> 
+										<label control-label col-md-5" for="uname">UserName:</label>       
+												<input type="text" class="form-control" name='uname' id="uname" placeholder="Enter username" ng-model="user.userName"  ng-minlength="4" ng-maxlength="10"  ng-pattern="/^[a-zA-Z\s]*$/" required>
+									<span class="error" ng-show="userForm.uname.$dirty&&userForm.uname.$error.required" style="color:maroon">
+								 Required username!</span>
+								 <span class="error" ng-show="userForm.uname.$error.minlength" style="color:maroon">
+									Not valid username! it should be of minimum of length 4</span>
+									<span class="error" ng-show="userForm.uname.$error.maxlength" style="color:maroon">
+									 Not valid username! it should be of maximum of length 10</span>
+										 <span style="color:maroon" ng-show="userForm.uname.$dirty&&userForm.uname.$error.pattern">Please enter valid username only alphabets are allowed! </span>
+							</div>
+						</div>
+					<div class="form-group">
+							<div class="col-md-12"> 
+								<label control-label col-md-5" for="pwd">Password:</label>        
+												<input type="password" class="form-control"  name='pwd' id="pwd" placeholder="Enter password" ng-model="user.password" required ng-minlength="6" ng-maxlength="10"  required>
+										<span class="error" ng-show="userForm.pwd.$dirty&&userForm.pwd.$error.required" style="color:maroon">
+								 Required password!</span>
+								 <span class="error" ng-show="userForm.pwd.$error.minlength" style="color:maroon">
+									Not valid password! it should be of minimum of length 6</span>
+									<span class="error" ng-show="userForm.pwd.$error.maxlength" style="color:maroon">
+									 Not valid password! it should be of maximum of length 10</span>
+					</div>
+					</div>
+					<br/>
+				<div class="form-group">        
+							<button   type="submit"  ng-click="createUser(user)">Submit</button>
+						<br/>
+						<br/>
+				</div>
+			</form>
+    </div>
+    <div class="col-md-6">
+      <IMG SRC="https://www.ucm.es/data/cont/docs/1157-2017-02-16-registration.jpg" alt="RegPic" width="550" height="480" class=".hoverable" >
+     </IMG>             
+    </div>
+  </div>
+</div>
+<style>
+h2{
+	color:white;
+}
+form{
+	background-color: #a3cccc;
+	padding-right:200px;
+	padding-left:100px;
+
+}
+label{
+	 color:black;
+	 font-size:16px;
+}
+button{
+	color:white;
+	background-color:#800000;
+	border-radius: 20%;
+	font-size:20px;
+	border:#800000;
+	margin-left: 50px;
+}
+input.form-control{
+	padding-right:50px;
+}
+button:hover {
+		background: black;
+}
+.form-group{
+	padding-left: 20px;
+}
+</style>
+

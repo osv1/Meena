@@ -1,0 +1,174 @@
+<body >
+   <center><h2 >Billing</h2></center>
+        <br/>
+    <div class="input-group">
+                <input class="form-control" ng-model="search" placeholder="Search" type="search" ng-change="search()"   /> 
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+     </div>
+     <div ng-init="getCartProduct()" class="text-info" style="font-size:20px">
+        <br/>
+        <button ng-click="backToBuyProduct()" class="btn btn-primary" >Back</button> 
+        <br/>
+      <form name="cartForm">    
+      <table class="table" >
+      <thead>
+        <tr>
+          <th>Name:</th>
+            <th>Price:</th>
+            <th>Quantity:</th>  
+            <th>Total:</th> 
+        </tr>
+      </thead>
+       <tbody dir-paginate="product in products.cart | filter : search | itemsPerPage:4"  ng-form="cartBillingForm">
+      <tr >
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <input type="number"  ng-model="product.selectedqty" name="input" ng-maxlength="4"required ng-pattern="/^[0-9]{1,}$/" />
+               <span class="error" ng-show="cartBillingForm.input.$error.required" >
+                Required quantity!</span>
+                 <span  class="error" ng-show="cartBillingForm.input.$dirty && cartBillingForm.input.$error.maxlength">Maxlimit of quantity is 4 digits only </span>
+              <span class="error" ng-show="cartBillingForm.input.$error.pattern">
+                Positive numbers allowed</span>
+          </td>
+          <td>
+             <label ng-model="product.total" ng-show="product.price*product.selectedqty ">
+                {{product.price*product.selectedqty}}
+              </label>
+         </td>   
+        <br/>
+        <br/> 
+    </tr>
+  <br/>
+  </tbody>
+      </table>
+      </div>
+    </form> 
+         
+       <br/>
+    <label ng-model="gtotal" class="total">Grand Total:<p>Rs.<span>{{gtotal}}</span></p></label>
+     </div>
+     <br/>
+     <center><button class="btn btn-info" ng-click="buyAll(products.cart)" ng-if="!isCart" style="font-size:18px"  ng-disabled="cartForm.$invalid">View Total</button>
+     <button class="btn btn-danger" ng-click="cancelAll()" style="font-size:18px">Cancel</button></center>
+     <br/>
+     <form  class="form-horizontal"  name="billingForm"  ng-show="gtotal">
+     <br/><br/>
+      <center><h2>ADD Credentials</h2></center>
+        <div class="form-group">
+            <div class="col-sm-5"> 
+                  <label control-label col-sm-4" for="name">Name:</label>        
+                  <input type="text" class="form-control"  placeholder="Enter your name"  name='firstname' required  ng-minlength="4" ng-model="name" ng-maxlength="15"  ng-pattern="/^[a-zA-Z\s]*$/"/>
+                     <span class="error" ng-show="billingForm.firstname.$dirty && billingForm.firstname.$error.required" style="color:maroon">
+                     Required Name!</span>
+                    <span class="error" ng-show="billingForm.firstname.$dirty && billingForm.firstname.$error.minlength" style="color:maroon">
+                      Not valid name! it should be of minimum 0f 4 letters</span>
+                    <span class="error" ng-show="billingForm.firstname.$dirty && billingForm.firstname.$error.maxlength" style="color:maroon">
+                       It should be of maxlength 15 !</span>
+                      <span style="color:maroon" ng-show="billingForm.firstname.$dirty && billingForm.firstname.$error.pattern">Please Enter Valid Name</span>
+          </div>
+          </div>
+        <div class="form-group">
+            <div class="col-sm-5"> 
+                <label control-label col-sm-4" for="email" >Email:</label>
+                    <input type="emails" class="form-control"  name='email' placeholder="Enter email"   ng-pattern="/^[^\s@]+@[^\s@]+\.[a-z]{2,5}$/" ng-model=" email"required />
+              <!--  <div role="alert"> -->
+                      <span style="color:maroon" ng-show="billingForm.email.$dirty && billingForm.email.$error.required"> Required email id! </span>
+                    <span style="color:maroon" ng-show="billingForm.email.$dirty&&billingForm.email.$error.pattern">Please Enter Valid Email</span>
+            <!--   </div> -->
+        </div>
+        </div>
+        <div class="form-group">
+             <div class="col-sm-5"> 
+                   <label control-label col-sm-4" for="mob">Mobile No.:</label>
+                      <input type="number"  name='mobile' id="mob" placeholder="Enter mobile no."  required  ng-pattern="/^[0-9]{1,}$/" ng-minlength="10"  ng-model="mobno" ng-maxlength="10"/>
+                     <div role="alert"> 
+                          <span class="error" ng-show="billingForm.mobile.$dirty && billingForm.mobile.$error.required" style="color:maroon">
+                           Required mobile no.!</span>
+                           <span class="error" ng-show="billingForm.mobile.$dirty && billingForm.mobile.$error.minlength" style="color:maroon">
+                            Not valid number! it should be of 10 digits</span>
+                          <span class="error" ng-show="billingForm.mobile.$dirty && billingForm.mobile.$error.maxlength" style="color:maroon">
+                            Not valid number! it should be of 10 digits</span>
+                          <span style="color:maroon" ng-show="billingForm.mobile.$dirty && billingForm.mobile.$error.pattern">Please enter postive numbers only! </span>
+                    </div>  
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5"> 
+                  <label control-label col-sm-4" for="uname">Credit card no.:</label>       
+                      <input type="text" class="form-control" name='uname' id="username" placeholder="Enter username" ng-model="credit"   ng-pattern="/^[0-9]{1,}$/" ng-minlength="6" ng-maxlength="7" required/>
+                <!-- <div  role="alert"> -->
+                <span class="error" ng-show="billingForm.uname.$dirty && billingForm.uname.$error.required" style="color:maroon">
+               Required credit card no.!</span>
+                <span class="error" ng-show="billingForm.uname.$dirty && billingForm.uname.$error.minlength" style="color:maroon">
+                Not valid number! it should be of 6 digits</span>
+              <span class="error" ng-show="billingForm.uname.$dirty && billingForm.uname.$error.maxlength" style="color:maroon">
+                Not valid number! it should be of 7 digits</span>
+              <span style="color:maroon" ng-show="billingForm.uname.$dirty && billingForm.uname.$error.pattern">Please enter postive numbers only! </span>
+              <!-- </div> -->
+            </div>
+          </div>
+        <div class="form-group">
+            <div class="col-sm-5"> 
+              <label control-label col-sm-4" for="pwd">Password:</label>        
+                      <input type="password" class="form-control"  name='psd' id="pwd" placeholder="Enter password" ng-model="password"  ng-minlength="6" ng-maxlength="7"  required/>
+            <!-- <div role="alert"> -->
+                  <span class="error" ng-show="billingForm.psd.$dirty && billingForm.psd.$error.required" style="color:maroon">
+               Required password!</span> 
+               <span class="error" ng-show="billingForm.psd.$dirty && billingForm.psd.$error.minlength" style="color:maroon">
+                Not valid number! it should be of miniumum 6 of digits</span>
+              <span class="error" ng-show="billingForm.psd.$dirty && billingForm.psd.$error.maxlength" style="color:maroon">
+                Not valid number! it should be of maximum of 7 digits</span>
+            <!-- </div> -->
+        </div>
+        </div>
+        <br/>
+            <div ng-repeat= "item in product"  class="text-d" style="font-size:20px">
+                <label  class="text-w" >Product Name:</label>
+                  {{item.name}}
+                  <br/>
+                <label  class="text-w" >Price:</label>
+                  {{item.price}}
+                  <br/>
+                  <label  class="text-w" >Details:</label>
+                  {{item.details}}
+                  <br/>
+                  <label  class="text-w" ng-show= "quan*item.price">Total Amount: 
+                  {{(quan*item.price)}}</label>
+              </div>
+    </form>
+    <br/> 
+    <center> <button class="btn btn-info" type="submit" ng-disabled="billingForm.$invalid" ng-click="buyProduct(products.cart)">Submit</button></center>
+<style>
+   .table{
+   background-color:#a3cccc;
+   border-collapse: separate;
+
+/*border-spacing: 50px 0;*/
+}
+.total{
+  color:white;
+  background-color:black;
+  padding-left:30px;
+  padding-top:3px;
+  padding-right:25px;
+  font-size:18px;
+
+}
+form{
+   background-color:#a3cccc;
+   padding-left:50px;
+}
+.text-info{
+  color:black;
+}
+span.error{
+
+  color:#800000;
+  text-align:right;
+}
+
+</style>
+   </body>

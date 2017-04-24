@@ -1,0 +1,63 @@
+<body>
+<div ng-init='getProduct()'  col-md-7 style="font-size:20px" class="text-info">
+<br/>
+    <button  class="btn btn-primary" ng-click='backToViewCart()' >Back</button>
+       <br/><br/>
+    <div class="table " style="border:2px solid gray"  style="display:inline" col-md-6  id="repeat">
+            <br/>
+           <label >Product Name:</label>
+              {{product.name}}
+             <br/>
+            <label >Details:</label>
+              {{product.details}}
+               <br/>
+            <label>Price:</label>
+              {{product.price}}
+            <br/>
+            <label>Offer:</label>
+              {{product.offer}}
+             <br/>
+        </div>
+  <form class="form-horizontal" name="complaintForm">
+    <div class="text-danger">
+           <div class="form-group" >
+                <label class="control-label col-sm-1" for="pname" >Complaint:</label>
+                <br/>
+                   <div class="col-sm-12">
+                        <input type="text" class="form-control" ng-model ="product.complaint"   placeholder="Enter complaint" ng-minlength="10" ng-maxlength="50" ng-pattern="/^[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z\s]*|^[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z\s]*[0-9]{2,3}$/" name="cmpname" required />
+                            <span class="error" ng-show="complaintForm.cmpname.$dirty && complaintForm.cmpname.$error.required" style="color:maroon">
+                            Required complaint!</span>
+                            <span class="error" ng-show="complaintForm.cmpname.$error.minlength" style="color:maroon"> Not valid complaint! it should be of minimum of length 10</span>
+                            <span class="error" ng-show="complaintForm.cmpname.$error.maxlength" style="color:maroon">
+                            Not valid complaint! it should be of maximum of length 20</span>
+                            <span style="color:maroon" ng-show="complaintForm.cmpname.$dirty && complaintForm.cmpname.$error.pattern">Please enter valid complaint! 1st 3 has to be alphabets and inbetween nos. are allowed! </span>
+                    </div>
+          </div>
+      </div>
+          <center><button  ng-disabled="complaintForm.$invalid" ng-click="productComplaint(id,product)" class="btn btn-success">Submit</button></center>
+           <br/>
+    </form>
+    </div>
+<style>
+div.table{
+  background-color:#838B83;
+  color:black;
+  padding-left:30px;
+}
+h1{
+  color:white;
+}
+label{
+  color:#800000;
+  font-size:18px;
+}
+button{
+  font-size:18px;
+}
+form{
+  background-color:#838B83;
+  color:black;
+    padding-left:30px;
+}
+</style>
+</body>

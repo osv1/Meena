@@ -1,0 +1,55 @@
+<div ng-init='getComments()' class="text-warning">
+    <center><h3>View Feedbacks</h3></center>
+    <button  class="btn btn-primary" ng-click='backToadmin()'>Back</button>
+    <br/><br/>
+ 	<div class="table table-hover" dir-paginate="prod in comments |filter : search | itemsPerPage:4"  col-md-7 style="display:inline" >
+              <div class="col-md-6" style="border:1px solid gray"  style="display:block"  >
+                    <br/>
+                    <label class="text-danger">Category Name:</label>
+                    {{prod.categoryName}}
+                    <br/>
+                    <label class="text-danger">Product Name:</label>
+                    {{prod.name}}
+                    <br/>
+                    <label class="text-danger">Description:</label>
+                    {{prod.details}}
+                    <br/>
+                    <label class="text-danger">Price:</label>
+                    {{prod.price}} 
+                    <br>   
+                    <label class="text-danger">Feedback:</label>
+                    {{prod.comment}} 
+                    <br/> 
+            </div>
+			</div>
+            </div >
+            
+	
+</div>
+    <div  style="font-size:20px"> 
+       <center>
+            <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true">
+            </dir-pagination-controls>
+           
+        </center> 
+    </div>
+<style>
+th{
+    color:#7e0b1b;
+}
+td{
+    color:#191970;
+}
+.col-md-6
+{
+    background-color:black;
+    font-size: 18px;
+}
+h3{
+    color:white;
+}
+
+</style>

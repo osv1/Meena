@@ -1,0 +1,66 @@
+<body>
+<center><h1>Feedback</h1></center>
+<div ng-init='getProduct()'  col-md-7 style="font-size:20px" class="text-info">
+<br/>
+    <button  class="btn btn-primary" ng-click='backToViewCart()' >Back</button>
+       <br/><br/>
+  <form name="feedbackForm">
+    <em><b><div class="table table-hover"   style="display:inline" col-md-6  id="repeat">
+            <br/>
+           <label >Product Name:</label>
+              {{product.name}}
+             <br/>
+            <label >details:</label>
+              {{product.details}}
+               <br/>
+            <label >Price:</label>
+              {{product.price}}
+            <br/>
+            <label >Offer:</label>
+              {{product.offer}}
+             <br/>
+        </div></b></em>
+        <div >
+           <em><b><label >Feedback:</label></b></em>
+           <br/>
+          <textarea  rows="3" cols="55" name='feedback' placeholder="Enter feedback here...." required ng-model="product.feedback" ng-minlength="10" ng-maxlength="50" ng-pattern="/^[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z\s]*|^[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z\s]*[0-9]{2,3}$/"></textarea>
+            <br/>
+             <span class="error" ng-show="feedbackForm.feedback.$dirty && feedbackForm.feedback.$error.required"  style="color:maroon">
+             Required feedback!</span>
+             <span class="error" ng-show="feedbackForm.feedback.$error.minlength" style="color:maroon">Not valid product feedback! it should be of minimum of length 10</span>
+              <span class="error" ng-show="feedbackForm.feedback.$error.maxlength" style="color:maroon"> Not valid product feedback! it should be of maximum of length 20</span>
+              <span style="color:maroon" ng-show="feedbackForm.feedback.$dirty&&feedbackForm.feedback.$error.pattern">Please enter valid product feedback! 1st 3 has to be alphabets and inbetween nos. are allowed! </span>
+          <br/>
+          <br/>
+          <center><button  ng-disabled="feedbackForm.$invalid"  style="font-size:16px" ng-click="cartProductFeedback(id,product) " >Send</button></center>
+          <br/>
+        </div>
+  </form>
+</div>
+<style>
+form{
+  background-color:#838B83;
+  padding-left:100px;
+  color:#800000;
+
+}
+h1{
+  color:white;
+}
+label{
+  color:black;
+  font-size:18px;
+}
+button{
+
+  background-color:#006666;
+  border-radius: 20%;
+  font-size:20px;
+  border:#006666;
+  color:white;
+}
+button:hover {
+    background: black;
+}
+</style>
+</body>

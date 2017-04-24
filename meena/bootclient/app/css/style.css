@@ -1,0 +1,16 @@
+
+.panel-default {
+ opacity: 0.9;
+ margin-top:30px;
+}
+.form-group.last {
+ margin-bottom:0px;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      margin: auto;
+    
+  }
+div .para{
+  	 color: black;
+  }

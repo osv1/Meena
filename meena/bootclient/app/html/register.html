@@ -1,0 +1,28 @@
+<body>
+    <div >
+        <table class="table table-hover" >
+            <tr>
+                <th>Name</th>
+                <th> Email</th>
+                <th>Mobile no.</th>
+                <th>username</th>
+                 <th>password</th>
+            </tr>
+            <tr ng-repeat="user in users ">
+
+                    <td>{{user.firstName}}</td>
+                    <br/>
+                    <td>{{user.email}}</td>
+                    <br/>
+                    <td>{{user.mobileNumber}}</td>
+                    <br/>
+                    <td>{{user.userName}}</td>
+                     <br/>
+                    <td>{{user.password}}</td>
+                    
+             </tr>
+        </table>
+            
+
+    </div>
+</body>

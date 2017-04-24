@@ -1,0 +1,41 @@
+<head>
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body  class="header">
+   <nav class="navbar navbar-inverse" id="nav">
+    <ul class="nav navbar-nav"  style="font-size:22px">
+        <li ><img src="http://www.pngall.com/wp-content/uploads/2016/06/Ecommerce-PNG-File.png" alt="logo" width="110" height="80"><img></li>
+      	<li><a class="main"  ui-sref="home" >Home</a></li>
+        <li><a  ui-sref="aboutus">About Us</a></li>
+        <li><a  ui-sref="product" ng-if="!isadminlogin">Admin</a></li>
+        
+        <li><a  ui-sref="register" ng-if="!isuserlogin">Register</a></li>
+        <li><a  ui-sref="category">Category</a></li>
+    </ul>
+    <ul class="nav navbar-right"  style="font-size:22px">
+           <li class="right"><a  ui-sref="login" ng-if="!isuserlogin" ng-click="admin()" style="color:orange">Login</a></li>
+            <li><a  ui-sref="home" ng-click="logout()" ng-if="isuserlogin" style="color:orange">Logout</a></li>
+    </ul>
+     <ul class="nav navbar-right"  style="font-size:22px">
+          <li><a  ui-sref="profile">Profile</a></li>
+    </ul>
+</nav>
+<style>
+ul {
+    padding-right: 40px;
+ }
+body
+{
+     background-color: #FF9009;
+     padding-right:50px; 
+     
+}
+span.glyphicon-user{
+    font-size: 1.2em;
+    padding-right:2px;
+    color:#800000;
+    font-weight:bolder;
+}
+
+</style>
+</body>

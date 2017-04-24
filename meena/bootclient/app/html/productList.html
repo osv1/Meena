@@ -1,0 +1,136 @@
+<body>
+ <center><h3 >Admin</h3></center> 
+ <br/>
+    <div class="input-group" col-sm-5>
+            <ul>
+                <li class="filtering">
+                    <input class="form-control" ng-model="search.name" placeholder="Search on product name" type="search" ng-change="search()" style="width: 200px; height: 40px" />
+                    <button class="input-group-addon" > 
+                       <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </li>
+                <li class="filtering">
+                    <button  class="btn btn-default"ng-click="sorting.predicate = ['name']; sorting.asc = !sorting.asc ;">Sort by name
+                    </button>
+                </li>
+                <li class="filtering">
+                    <button class="btn btn-default"  ng-click="sorting.predicate = ['price']; sorting.asc = !sorting.asc ;">Sort by price
+                    </button>
+                </li>
+     </div>
+
+    <em><div ng-init='getProducts()' class="text-warning" style="font-size:20px">
+            <center><h3>Product List</h3></center>
+        <button  class="btn btn-primary" ng-click='backToadmin()'>Back</button>
+       <button  class="btn btn-info" ng-click='addProduct(product)'><span class="glyphicon glyphicon-plus"></span>Add</button>
+      <!--  <button  class="btn btn-info" ng-click='addCategory()'><span class="glyphicon glyphicon-plus"></span>Add Product</button> -->
+       <br/><br/>    
+           <div class="table table-hover" dir-paginate="product in prodData| filter: {'name' : search.name}|itemsPerPage:4 | orderBy: sorting.predicate:sorting.asc "  col-md-7 style="display:inline" >
+              <div class="col-md-6" style="border:1px solid gray"  style="display:block"  >
+                 <br/>
+                     <!--  <div class="col-sm-2">
+                          <br/>
+                            <img alt="Product Pic" src="app/image/{{product.productImage}}" ngf-select="uploadProductImage($file)" class="img-circle img-responsive" class="img-circle img-responsive">
+                      </div>
+                    <br/> -->
+                    <!-- <label class="text-danger">Category Name:</label>
+                    {{product.category.categoryName}}
+                    <br/> -->
+                    <label class="text-danger">Product Name:</label>
+                    {{product.name}}
+                    <br/>
+                    <label class="text-danger">Description:</label>
+                    {{product.details}}
+                    <br/>
+                    <label class="text-danger">Price:</label>
+                    {{product.price}}
+                    <br/>
+                    <label class="text-danger">Status:</label>
+                   {{product.status}}
+                    <br/>
+                  <label class="text-danger">Offers:</label>
+                    {{product.offer}}
+                    <br/>
+                  <label class="text-danger">Quantity:</label>
+                    {{product.quantity}}
+                    <br/>
+                  <center> 
+                         <em><button class="btn btn-success" ng-click="editProduct(product._id)"><span class="glyphicon glyphicon-pencil"></span>Edit</button>
+                       <button class="btn btn-danger" ng-click=" deleteProduct(product._id)" ><span class=" glyphicon glyphicon-trash"></span>Delete</button> 
+                        <button class="btn btn-info" ng-click="addOffer(product._id)"><span class="glyphicon glyphicon-plus"></span>Add Offer</button></center></em>
+    
+          </div>
+      </div>
+    </div>
+      <div>
+          <center> 
+              <dir-pagination-controls
+                max-size="7"
+                direction-links="true"
+                boundary-links="true" >
+             </dir-pagination-controls>
+        </center>
+
+      </div>
+    <style>
+div.col-md-6{
+    background-color:black;
+
+}
+h3{
+    color:white;
+}
+.inner{
+     background-color:white;
+}
+button{
+    font-size:18px;
+    size:18px;
+
+}
+
+input.form-control{
+    /*background-color:#c0c0c0;*/
+    color:black;
+}
+ span.glyphicon-pencil {
+    font-size: 1.6em;
+    padding-right:5px;
+    color:#800000;
+    font-weight:bolder;
+}
+span.glyphicon-plus {
+    font-size: 1.6em;
+    padding-right:5px;
+    color:#800000;
+    font-weight:bolder;
+}
+span.glyphicon-trash {
+    font-size: 1.6em;
+    padding-right:5px;
+    color:#800000;
+
+}
+img{
+  padding-right:20px;
+}
+.input-group-addon
+{
+  height:40px;
+  padding-right:18px;
+}
+ul li.filtering{
+   text-decoration-style: none;
+   float:right;
+   padding-right: 100px;
+   list-style: none;
+}
+.btn-default
+{
+  background-color:#800000;
+  color:white;
+  font-size:20px;
+  font-style:italic;
+}
+</style>
+</body>

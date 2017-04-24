@@ -1,0 +1,47 @@
+<div ng-init='getAllUsers()' >
+  <center><h2>Registered Users Info</h2> </center>
+<button  class="btn btn-primary" ng-click='backToadmin()'>Back</button>
+    <br/><br/>
+<div  dir-paginate="user in users| itemsPerPage:6"  col-md-7 style="display:inline">
+     <div class="col-md-6" style="border:1px solid gray"  style="display:block"  >
+         <br/>
+            <label>Name:</label>
+            {{user.firstName}}
+            <br/>
+            <label>Email Id:</label>  
+             {{user.email}}
+             <br/>
+            <label>Mobile No:</label>
+             {{user.mobileNumber}}
+             <br/>
+            <label>Username:</label>
+            {{user.userName}}
+    </div>
+</div>
+</div>
+ <div style="font-size:20px"> 
+      <center>
+            <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true">
+            </dir-pagination-controls>
+           
+            </center> 
+        </div>
+<style>
+div.col-md-7{
+ padding-left:100px;
+}
+div.col-md-6{
+ background-color:black;
+  color:white;
+  font-size:18px;
+}
+label{
+    color:#800000;
+}
+h2{
+  color:white;
+}
+</style>

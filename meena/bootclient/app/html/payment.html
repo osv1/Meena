@@ -1,0 +1,136 @@
+<div class="container" ng-init="getBuyCart()">
+		<b><em><h3 ><center>Fill  Details</center></h3></em></b>
+			<br/>
+      <button  class="btn btn-primary" ng-click='backToViewCart()'>Back</button>
+    <br/><br/>
+	<form  class="form-horizontal"  name="payForm" >
+   <br/><br/>
+			<div class="form-group">
+          <div class="col-sm-5"> 
+                <label control-label col-sm-4" for="name">Name:</label>        
+                <input type="text" class="form-control"  placeholder="Enter your name"  name='firstname' required  ng-minlength="4" ng-model="name" ng-maxlength="15"  ng-pattern="/^[a-zA-Z\s]*$/"/>
+                   <span class="error" ng-show="payForm.firstname.$dirty && payForm.firstname.$error.required" style="color:maroon">
+                   Required Name!</span>
+                  <span class="error" ng-show="payForm.firstname.$dirty && payForm.firstname.$error.minlength" style="color:maroon">
+                    Not valid name! it should be of minimum 0f 4 letters</span>
+                  <span class="error" ng-show="payForm.firstname.$dirty && payForm.firstname.$error.maxlength" style="color:maroon">
+                     It should be of maxlength 15 !</span>
+                    <span style="color:maroon" ng-show="payForm.firstname.$dirty && payForm.firstname.$error.pattern">Please Enter Valid Name</span>
+        </div>
+        </div>
+      <div class="form-group">
+          <div class="col-sm-5"> 
+              <label control-label col-sm-4" for="email" >Email:</label>
+                  <input type="emails" class="form-control"  name='email' placeholder="Enter email"   ng-pattern="/^[^\s@]+@[^\s@]+\.[a-z]{2,5}$/" ng-model=" email"required />
+            <!--  <div role="alert"> -->
+                    <span style="color:maroon" ng-show="payForm.email.$dirty && payForm.email.$error.required"> Required email id! </span>
+                  <span style="color:maroon" ng-show="payForm.email.$dirty&&payForm.email.$error.pattern">Please Enter Valid Email</span>
+          <!--   </div> -->
+      </div>
+      </div>
+      <div class="form-group">
+           <div class="col-sm-5"> 
+                 <label control-label col-sm-4" for="mob">Mobile No.:</label>
+                    <input type="number"  name='mobile' id="mob" placeholder="Enter mobile no."  required  ng-pattern="/^[0-9]{1,}$/" ng-minlength="10"  ng-model="mobno" ng-maxlength="10"/>
+                   <div role="alert"> 
+                        <span class="error" ng-show="payForm.mobile.$dirty && payForm.mobile.$error.required" style="color:maroon">
+                         Required mobile no.!</span>
+                         <span class="error" ng-show="payForm.mobile.$dirty && payForm.mobile.$error.minlength" style="color:maroon">
+                          Not valid number! it should be of 10 digits</span>
+                        <span class="error" ng-show="payForm.mobile.$dirty && payForm.mobile.$error.maxlength" style="color:maroon">
+                          Not valid number! it should be of 10 digits</span>
+                        <span style="color:maroon" ng-show="payForm.mobile.$dirty && payForm.mobile.$error.pattern">Please enter postive numbers only! </span>
+                  </div>  
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="col-sm-5"> 
+                <label control-label col-sm-4" for="uname">Credit card no.:</label>       
+                    <input type="text" class="form-control" name='uname' id="username" placeholder="Enter username" ng-model="credit"   ng-pattern="/^[0-9]{1,}$/" ng-minlength="6" ng-maxlength="7" required/>
+              <!-- <div  role="alert"> -->
+              <span class="error" ng-show="payForm.uname.$dirty && payForm.uname.$error.required" style="color:maroon">
+             Required credit card no.!</span>
+              <span class="error" ng-show="payForm.uname.$dirty && payForm.uname.$error.minlength" style="color:maroon">
+              Not valid number! it should be of 6 digits</span>
+            <span class="error" ng-show="payForm.uname.$dirty && payForm.uname.$error.maxlength" style="color:maroon">
+              Not valid number! it should be of 7 digits</span>
+            <span style="color:maroon" ng-show="payForm.uname.$dirty && payForm.uname.$error.pattern">Please enter postive numbers only! </span>
+            <!-- </div> -->
+          </div>
+        </div>
+      <div class="form-group">
+          <div class="col-sm-5"> 
+            <label control-label col-sm-4" for="pwd">Password:</label>        
+                    <input type="password" class="form-control"  name='psd' id="pwd" placeholder="Enter password" ng-model="password"  ng-minlength="6" ng-maxlength="7"  required/>
+          <!-- <div role="alert"> -->
+                <span class="error" ng-show="payForm.psd.$dirty && payForm.psd.$error.required" style="color:maroon">
+             Required password!</span> 
+             <span class="error" ng-show="payForm.psd.$dirty && payForm.psd.$error.minlength" style="color:maroon">
+              Not valid number! it should be of miniumum 6 of digits</span>
+            <span class="error" ng-show="payForm.psd.$dirty && payForm.psd.$error.maxlength" style="color:maroon">
+              Not valid number! it should be of maximum of 7 digits</span>
+          <!-- </div> -->
+      </div>
+      </div>
+       <div class="form-group">
+          <div class="col-sm-5"> 
+            <label control-label col-sm-4" for="pwd">quantity:</label>        
+                    <input type="number" class="form-control"  name='quan' id="pwd" placeholder="Enter quantity" ng-model="quan"  ng-minlength="1" ng-maxlength="3" ng-pattern="/^[0-9]{1,}$/" required/>
+          <!-- <div role="alert"> -->
+                <span class="error" ng-show="payForm.quan.$dirty && payForm.quan.$error.required" style="color:maroon">
+             Required quantity!</span>
+              <span class="error" ng-show="payForm.quan.$dirty && payForm.quan.$error.minlength" style="color:maroon">
+              Not valid number! it should be of 1 digits</span>
+            <span class="error" ng-show="payForm.quan.$dirty && payForm.quan.$error.maxlength" style="color:maroon">
+              Not valid number! it should be of 3 digits</span>
+             <span style="color:maroon" ng-show="payForm.quan.$dirty && payForm.quan.$error.pattern">Please enter postive numbers only! </span>
+          <!-- </div> -->
+      </div>
+      </div>
+      <br/>
+      		<div ng-repeat= "item in product"  class="text-d" style="font-size:20px">
+		      		<label  class="text-w" >Product Name:</label>
+		            {{item.name}}
+		            <br/>
+		         	<label  class="text-w" >Price:</label>
+		            {{item.price}}
+		            <br/>
+		          	<label  class="text-w" >Details:</label>
+		            {{item.details}}
+		            <br/>
+		            <label  class="text-w" ng-show= "quan*item.price">Total Amount:	
+		            {{(quan*item.price)}}</label>
+          	</div>
+	</form>
+  <br/>
+		 <center> <button  type="submit" ng-disabled="payForm.$invalid" ng-click="done(product,quan)">Submit</button></center>
+			 <br/>
+
+</div>
+<style>
+form{
+  background-color: #a3cccc;
+  padding-left:100px;
+}
+label{
+   color:black
+}
+h3{
+  color:white;
+}
+.text-d{
+  color:#7e0b1b;
+}
+button{
+  background-color:black;
+  font-size:18px;
+  color:white;
+  font-weight:bold;
+  border-color:black;
+   border-radius: 20%;
+}
+button:hover {
+    background: #800000;
+    border-color:#800000;
+}
+</style>

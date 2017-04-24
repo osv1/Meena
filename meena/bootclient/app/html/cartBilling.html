@@ -1,0 +1,83 @@
+<body >
+   <center><h2 >View Cart</h2></center>
+        <br/>
+    <div class="input-group">
+                <input class="form-control" ng-model="search" placeholder="Search" type="search" ng-change="search()" /> 
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+     </div>
+     <div ng-init="getCartProduct()" class="text-info" style="font-size:20px">
+        <br/>
+        <button ng-click="backToBuyProduct()" class="btn btn-primary" >Back</button>
+        <br/>
+		<div class="table"  col-md-7 style="display:inline" dir-paginate="product in products.cart | filter : search | itemsPerPage:4" >
+                  <div class="col-md-6" style="border:1px solid gray"  style="display:block"  >  
+                  <br/>
+                    <label class="text-warning">Product Name:</label>
+                        {{product.name}}
+                    <br/>
+                     <label class="text-warning">details:</label>
+                        {{product.details}}
+                    <br/>
+                    <label class="text-warning">Price:</label>
+                        {{product.price}}
+                    <br/>
+                    <label class="text-warning">Offer:</label>
+                        {{product.offer}}
+                    <br/>
+                    <label class="text-warning">Available Quantity:</label>
+                        {{product.quantity}}
+                    <br/> 
+                      
+             	<div>
+		             <em>
+		             <button ng-click="purchase(product._id)"  style="font-size:18px" class="btn btn-success">Buy Now</button>
+		             <button class="btn btn-warning" ng-click="complaint(product._id)" ng-if="!isCart" style="font-size:18px"><span class="glyphicon glyphicon-envelope"></span>Complaint</button>
+		            <button class="btn btn-danger" ng-click="deleteCart(product._id)" ng-if="!isCart" style="font-size:18px"><span class="glyphicon glyphicon-minus"></span>Delete from cart</button>
+		            <button class="btn btn-info" ng-click="cartFeedback(product._id)" ng-if="!isCart" style="font-size:18px"> <span class="glyphicon glyphicon-envelope"></span>Feedback</button>
+		            </em>
+            	</div>
+            <br/> 
+   		</div>
+    </div>
+    <br/>
+  </div>   
+    <br/>   
+   <center><button class="btn btn-info" ng-click="generateBill()" ng-if="!isCart" style="font-size:18px" ng-disable="disable">Buy All Now</button></center>
+   <div style="display:inline"> 
+      <center>
+            <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true">
+            </dir-pagination-controls>
+            </center> 
+      </div>
+  <style>
+ div.col-md-6
+  {
+    background-color: black;
+  }
+  h2{
+    color:white;
+  }
+ span.glyphicon-minus{
+    font-size: 1.2em;
+     color:#800000;
+    font-weight:bolder;
+}
+
+span.glyphicon-trash {
+    font-size: 1.2em;
+    padding-right:2px;
+    color:#800000;
+}
+span.glyphicon-envelope{
+    font-size: 1.2em;
+    padding-right:2px;
+    color:#800000;
+    font-weight:bolder;
+}
+  </style>
+ </body>
